@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rdeca">#FF0000</color>
+    <color name="zelena">#98FB98</color>
+    <color name="black">#000000</color>
+    <color name="bela">#FFFFFF</color>
+    <color name="opozorilo">#FDCEC3</color>
+    
+    <color name="transparentna">#40ffffff</color>
+    <color name="svetlo_siva">#C9C9C9</color>
+    <color name="fb_siva">#EDEFF4</color>
+    <color name="fb_modra_napis">#3B5998</color>
+    
+    <color name="prodajalna_ozadje">#DEDEDE</color>
+    <color name="prodajalna_ozadje_klik">#4EEE94</color>
+    
+    <color name="siva_okras">#cccccc</color>
+ 	<color name="modra">#0000cc</color>
+    <color name="nina_bez">#FF8C00</color>
+    
+    
+
+    <color name="red">#FF0000</color>
+    
+    <color name="gray">#878787</color>
+</resources>

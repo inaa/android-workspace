@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bela"
+    android:clickable="true"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/top_news"
+        android:gravity="center_vertical|center_horizontal|end|start"
+        android:onClick="startZadnjeNovice"
+        android:padding="5dp"
+        android:text="@string/rest_zadnje_novice_title"
+        android:textAlignment="viewStart" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/slo_tech"
+        android:gravity="center_vertical|center_horizontal|start"
+        android:onClick="startSloTech"
+        android:padding="5dp"
+        android:text="@string/rest_slo_tech_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/tehnik"
+        android:gravity="center_vertical|center_horizontal|end|start"
+        android:onClick="startMobitelTehnik"
+        android:padding="5dp"
+        android:text="@string/rest_mobitel_tehnik_title"
+        android:textAlignment="textStart" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/rac_nov"
+        android:gravity="center_vertical|center_horizontal|start"
+        android:onClick="startRacunalniskeNovice"
+        android:padding="5dp"
+        android:text="@string/rest_racunalniske_novice_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Button02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/mobi_novice"
+        android:gravity="center_vertical|center_horizontal|start"
+        android:onClick="startMobiNovice"
+        android:padding="5dp"
+        android:text="@string/rest_mobi_novice_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Button03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/slo_android"
+        android:gravity="center_vertical|center_horizontal|end|start"
+        android:onClick="startSloAndroid"
+        android:padding="5dp"
+        android:text="@string/rest_slo_android_title"
+        android:textAlignment="viewStart" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/search_news"
+        android:gravity="center_vertical|center_horizontal|start"
+        android:onClick="startSearch"
+        android:padding="5dp"
+        android:text="@string/search" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Button6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/app_info"
+        android:gravity="center_vertical|center_horizontal|end|start"
+        android:onClick="startAbout"
+        android:padding="5dp"
+        android:text="@string/about"
+        android:textAlignment="viewStart" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

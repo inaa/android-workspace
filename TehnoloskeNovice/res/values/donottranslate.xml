@@ -1,0 +1,38 @@
+<resources>
+
+    <string name="app_name">IT novice</string>
+    <string name="popup_article_item1">Oglej si članek na spletu</string>
+    <string name="bundle_rest">REST</string>
+    <string name="bundle_title">TITLE</string>
+    <string name="rest_slo_tech">http://ii-tech.no-ip.biz/IITech/service/article/0</string>
+    <string name="rest_mobitel_tehnik">http://ii-tech.no-ip.biz/IITech/service/article/1</string>
+    <string name="rest_racunalniske_novice">http://ii-tech.no-ip.biz/IITech/service/article/2</string>
+    <string name="rest_zadnje_novice">http://ii-tech.no-ip.biz/IITech/service/article</string>
+    <string name="rest_mobi_novice">http://ii-tech.no-ip.biz/IITech/service/article/3</string>
+    <string name="rest_slo_android">http://ii-tech.no-ip.biz/IITech/service/article/4</string>
+    <string name="rest_search">http://92.37.52.167:8080/IITech/service/article</string>
+    <string name="rest_slo_tech_title">"Slo-Tech"</string>
+    <string name="rest_mobitel_tehnik_title">Mobitel Tehnik</string>
+    <string name="rest_racunalniske_novice_title">Računalniške Novice</string>
+    <string name="rest_zadnje_novice_title">Zadnje Novice</string>
+    <string name="rest_mobi_novice_title">Mobi Novice</string>
+    <string name="rest_slo_android_title">"Slo-Android"</string>
+    <string name="rest_search_title">Iskanje po vseh člankih</string>
+    <string name="search_hint">Primer vnosa (iphone ipad)</string>
+    <string name="search_label">Članki</string>
+    <string name="search">Išči</string>
+    <string name="settings">Nastavitve</string>
+    <string name="about">O Aplikaciji</string>
+    <string name="nameTitle">Ime aplikacije:</string>
+    <string name="nameData">IT Novice</string>
+    <string name="versionTitle">Verzija:</string>
+    <string name="versionData">1.0</string>
+    <string name="developerName">II Tech</string>
+    <string name="nameIgor">Igor Krumpak</string>
+    <string name="nameIrena">Irena Pušnik</string>
+    <string name="share_title">Deli</string>
+    <string name="opozorilo_ni_podatkov_iskanje">Ni najdenih rezultatov</string>
+    <string name="opozorilo_ni_podatkov">Ni internetne povezave!</string>
+    <string name="opozorilo_ni_vnesenih_podatkov">Prosimo vnesite ključne besede!</string>
+
+</resources>
