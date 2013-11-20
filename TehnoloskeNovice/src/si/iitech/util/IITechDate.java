@@ -1,9 +1,8 @@
 package si.iitech.util;
 
+import android.annotation.SuppressLint;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class IITechDate extends Date {
 	
@@ -19,6 +18,7 @@ public class IITechDate extends Date {
 	}
 	
 	
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public String toString() {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");

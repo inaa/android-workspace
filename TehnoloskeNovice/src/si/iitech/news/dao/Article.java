@@ -7,6 +7,10 @@ public class Article extends ArticlePreview {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private String author;
 	private String data;
 	private String imageStr;
