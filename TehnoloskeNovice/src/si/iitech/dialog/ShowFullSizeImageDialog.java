@@ -15,7 +15,6 @@ public class ShowFullSizeImageDialog extends Dialog {
 
 	private FullScreenImageAdapter adapter;
 	private ViewPager viewPager;
-	private boolean test = false;
 	
 	public ShowFullSizeImageDialog(Context context, List<MediaElement> images) {
 		super(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
