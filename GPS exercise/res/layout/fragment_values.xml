@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background_value"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/speed_backgroud" >
+    android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView_speed_value"
+        android:id="@+id/textView_value"
         style="@style/textViewStyleValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,21 +14,19 @@
         android:text="@string/no_value" />
 
     <TextView
-        android:id="@+id/textView_speed_title"
+        android:id="@+id/textView_value_title"
         style="@style/textViewStyleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/speed_title" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/textView_speed_unit"
+        android:id="@+id/textView_value_unit"
         style="@style/textViewStyleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/speed_metric_unit" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -24,11 +24,11 @@ public class Fonts {
 				"fonts/DS-DIGIB.TTF");
 	}
 
-	public Typeface getTypeFaceDigitalFont() {
+	public Typeface getTypefaceDigitalFont() {
 		return typefaceDigitalFont;
 	}
 
-	public Typeface getTypeFaceDigitalFontBold() {
+	public Typeface getTypefaceDigitalFontBold() {
 		return typefaceDigitalFontBold;
 	}
 

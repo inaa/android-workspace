@@ -2,38 +2,36 @@ package si.iitech.exercise.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import si.iitech.exercise.R;
 import si.iitech.exercise.data.ExerciseData;
+import si.iitech.exercise.data.ExerciseDataGatherer;
 import si.iitech.exercise.data.ExerciseViewChanger;
+import si.iitech.exercise.data.ExerciseViewUpdater;
 import si.iitech.exercise.fragment.DistanceFragment;
 import si.iitech.exercise.fragment.ExerciseFragment;
 import si.iitech.exercise.fragment.PaceFragment;
 import si.iitech.exercise.fragment.SpeedFragment;
 import si.iitech.exercise.fragment.TopSpeedFragment;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
-public class MainActivity extends FragmentActivity implements LocationListener {
+public class MainActivity extends FragmentActivity {
 
-	private LocationManager locationManager;
-	private ExerciseData exerciseData;
+	private ExerciseData			exerciseData;
 
-	private SpeedFragment speedFragment;
-	private TopSpeedFragment topSpeedFragment;
-	private DistanceFragment distanceFragment;
-	private PaceFragment paceFragment;
+	private SpeedFragment			speedFragment;
+	private TopSpeedFragment		topSpeedFragment;
+	private DistanceFragment		distanceFragment;
+	private PaceFragment			paceFragment;
 
-	private List<ExerciseFragment> exerciseFragmentList;
+	private List<ExerciseFragment>	exerciseFragmentList;
 
-	private FrameLayout frameLayoutDataArea;
-
-	private ExerciseViewChanger exerciseViewChanger;
+	private ExerciseViewChanger		exerciseViewChanger;
+	private ExerciseDataGatherer	exerciseDataGatherer;
+	private ExerciseViewUpdater		exerciseViewUpdater;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +39,39 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		setContentView(R.layout.activity_main);
 
 		initFragments();
-		initView();
+		initExerciseData();
 		initLocationListner();
+
 		startExercise();
+	}
+
+	private void initExerciseData() {
+		Locale locale = getResources().getConfiguration().locale;
+		exerciseData = new ExerciseData(this, locale);
+
+		// UPDATE EXERCISE DATA WITH GPS DATA
+		exerciseDataGatherer = new ExerciseDataGatherer(this, exerciseData);
+
+		// CHANGES VIEW
+		exerciseViewChanger = new ExerciseViewChanger(this, exerciseFragmentList);
+
+		// UPDATE FRAGMENTS EVERY SECOND
+		exerciseViewUpdater = new ExerciseViewUpdater(exerciseData, exerciseFragmentList);
 
 	}
 
 	private void startExercise() {
-		exerciseData = new ExerciseData(this);
+		// TODO
 	}
 
 	private void initFragments() {
-		speedFragment = new SpeedFragment();
-		topSpeedFragment = new TopSpeedFragment();
-		distanceFragment = new DistanceFragment();
-		paceFragment = new PaceFragment();
+		Resources resources = getResources();
+		speedFragment = ExerciseFragment.newInstanceSpeedFragment(resources);
+		topSpeedFragment = ExerciseFragment.newInstanceTopSpeedFragment(resources);
+		distanceFragment = ExerciseFragment.newInstanceDistanceFragment(resources);
+		paceFragment = ExerciseFragment.newInstancePaceFragment(resources);
 
+		// STORE FRAGMENTS FOR LATER USE
 		exerciseFragmentList = new ArrayList<ExerciseFragment>();
 
 		exerciseFragmentList.add(speedFragment);
@@ -67,47 +82,15 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	}
 
 	private void initLocationListner() {
-		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
-				0, this);
 
 	}
 
-	private void initView() {
-		frameLayoutDataArea = (FrameLayout) findViewById(R.id.frameLayoutDataArea);
-		exerciseViewChanger = new ExerciseViewChanger(this,
-				frameLayoutDataArea, exerciseFragmentList);
-	}
-
-	@Override
-	public void onLocationChanged(Location location) {
-		exerciseData.formatData(location);
-		exerciseViewChanger.updateData(exerciseData);
-		// speedFragment.updateData(exerciseData);
-		// distanceFragment.updateData(exerciseData);
-		// topSpeedFragment.updateData(exerciseData);
-	}
-
-	@Override
-	public void onProviderDisabled(String provider) {
-		Toast.makeText(this, provider, Toast.LENGTH_LONG).show();
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onProviderEnabled(String provider) {
-		Toast.makeText(this, provider, Toast.LENGTH_LONG).show();
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onStatusChanged(String status, int numberOfSatelites,
-			Bundle arg2) {
-		Toast.makeText(this, status + " " + numberOfSatelites,
-				Toast.LENGTH_LONG).show();
-
-	}
+	// public void updateData(ExerciseData exerciseData) {
+	// for (ExerciseFragment exerciseFragment : exerciseFragmentList) {
+	// if (exerciseFragment.isOnView()) {
+	// exerciseFragment.displayExerciseData(exerciseData);
+	// }
+	// }
+	// }
 
 }

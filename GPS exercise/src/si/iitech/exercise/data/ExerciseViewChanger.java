@@ -6,33 +6,28 @@ import si.iitech.exercise.R;
 import si.iitech.exercise.fragment.ExerciseFragment;
 import si.itech.swipe.ActivitySwipeDetector;
 import si.itech.swipe.SwipeInterface;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
 public class ExerciseViewChanger implements SwipeInterface {
 
-	private FrameLayout frameLayoutDataArea;
-	private List<ExerciseFragment> exerciseFragmentList;
-	private FragmentActivity activity;
+	private FrameLayout				frameLayoutDataArea;
+	private List<ExerciseFragment>	exerciseFragmentList;
+	private FragmentManager			fragmentManager;
 
-	public ExerciseViewChanger(final FragmentActivity activity,
-			final FrameLayout frameLayoutDataArea,
-			final List<ExerciseFragment> exerciseFragmentList) {
-		this.frameLayoutDataArea = frameLayoutDataArea;
+	public ExerciseViewChanger(final FragmentActivity activity, final List<ExerciseFragment> exerciseFragmentList) {
+		this.frameLayoutDataArea = (FrameLayout) activity.findViewById(R.id.frameLayoutDataArea);
 		this.exerciseFragmentList = exerciseFragmentList;
-		this.activity = activity;
+		fragmentManager = activity.getSupportFragmentManager();
 		setFragments();
 		setSwipeListner();
 	}
 
 	private void setSwipeListner() {
-		ActivitySwipeDetector activitySwipeDetector = new ActivitySwipeDetector(
-				this);
+		ActivitySwipeDetector activitySwipeDetector = new ActivitySwipeDetector(this);
 		frameLayoutDataArea.setOnTouchListener(activitySwipeDetector);
 	}
 
@@ -42,18 +37,15 @@ public class ExerciseViewChanger implements SwipeInterface {
 		frameLayoutDataArea.setTag(exerciseFragmentList.get(0));
 	}
 
-	private void changeFragment(final Fragment fragment,
-			final int fragmenentLayout) {
-		FragmentManager fragmentManager = activity.getSupportFragmentManager();
-		FragmentTransaction fragmentTransaction = fragmentManager
-				.beginTransaction();
+	private void changeFragment(final ExerciseFragment fragment, final int fragmenentLayout) {
+		fragment.setOnView(true);
+		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.replace(fragmenentLayout, fragment);
 		fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 		fragmentTransaction.commit();
 	}
 
 	private void displayNextFragment(int position, View view) {
-		Log.i("positon1", position + "");
 
 		if (position == exerciseFragmentList.size()) {
 			position = 0;
@@ -61,15 +53,14 @@ public class ExerciseViewChanger implements SwipeInterface {
 		if (position == -1) {
 			position = exerciseFragmentList.size() - 1;
 		}
-		Log.i("positon2", position + "");
-		changeFragment(exerciseFragmentList.get(position), view.getId());
-		view.setTag(exerciseFragmentList.get(position));
+		ExerciseFragment fragment = exerciseFragmentList.get(position);
+		changeFragment(fragment, view.getId());
+		view.setTag(fragment);
 	}
 
 	@Override
 	public void bottom2top(View v) {
-		// TODO Auto-generated method stub
-
+		// NOT SUPPORTED
 	}
 
 	@Override
@@ -78,10 +69,7 @@ public class ExerciseViewChanger implements SwipeInterface {
 		ExerciseFragment fragment = (ExerciseFragment) v.getTag();
 		int position = exerciseFragmentList.indexOf(fragment);
 		fragment.setOnView(false);
-		Log.i("positon3", position + "");
-		position = position + 1;
-		displayNextFragment(position, v);
-
+		displayNextFragment(++position, v);
 	}
 
 	@Override
@@ -90,21 +78,12 @@ public class ExerciseViewChanger implements SwipeInterface {
 		ExerciseFragment fragment = (ExerciseFragment) v.getTag();
 		int position = exerciseFragmentList.indexOf(fragment);
 		fragment.setOnView(false);
-		position = position - 1;
-		displayNextFragment(position, v);
+		displayNextFragment(--position, v);
 	}
 
 	@Override
 	public void top2bottom(View v) {
 		// NOT SUPPORTED
-	}
-
-	public void updateData(ExerciseData exerciseData) {
-		for (ExerciseFragment exerciseFragment : exerciseFragmentList) {
-			if (exerciseFragment.isOnView()) {
-				exerciseFragment.updateData(exerciseData);
-			}
-		}
 	}
 
 }

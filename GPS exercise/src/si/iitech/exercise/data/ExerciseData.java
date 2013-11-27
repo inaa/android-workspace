@@ -5,31 +5,41 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.location.Location;
+import android.widget.Chronometer;
 
 public class ExerciseData {
+	
+	//CHANGE TO SINGLETONE!
 
-	private Location previusLocation;
+	private Location		previusLocation;
 
-	private long startTime;
-	private long endTime;
+	private long			startTime;
+	private long			endTime;
 
-	private float distance = 0.0f;;
-	private double speed = 0.0;
-	private double avgSpeed = 0.0;
-	private double topSpeed = 0.0;
+	private float			distance	= 0.0f;	;
+	private double			speed		= 0.0;
+	private double			avgSpeed	= 0.0;
+	private double			topSpeed	= 0.0;
 
-	private long pace = 0l;
+	private long			pace		= 0l;
 
-	private int calories;
+	private int				calories;
 
-	private Locale locale;
+	private Locale			locale;
 
-	private final double MIN_SPEED = 0.5;
-	private final double NO_VALUE = 0.0;
+	private final double	MIN_SPEED	= 0.5;
+	private final double	NO_VALUE	= 0.0;
 
-	public ExerciseData(final Context context) {
+	private Chronometer		chronometer;
+
+	public ExerciseData(final Context context, Locale locale) {
 		startTime = System.currentTimeMillis();
-		locale = context.getResources().getConfiguration().locale;
+		this.locale = locale;
+		chronometer = new Chronometer(context);
+	}
+
+	public Chronometer getChronometer() {
+		return chronometer;
 	}
 
 	public long getStartTime() {
@@ -79,8 +89,7 @@ public class ExerciseData {
 		}
 
 		if (null != this.previusLocation && tempSpeed > MIN_SPEED) {
-			this.distance = this.distance
-					+ location.distanceTo(previusLocation);
+			this.distance = this.distance + location.distanceTo(previusLocation);
 
 		}
 		this.previusLocation = location;
@@ -94,9 +103,9 @@ public class ExerciseData {
 	}
 
 	private String formatTime(long millis) {
-		//MANJKA 0 pri minutah èe je potrebna, boljši bi bil drugi naèin
-		int seconds = (int) (millis / 1000) % 60 ;
-		int minutes = (int) ((millis / (1000*60)) % 60);
+		// MANJKA 0 pri minutah èe je potrebna, boljši bi bil drugi naèin
+		int seconds = (int) (millis / 1000) % 60;
+		int minutes = (int) ((millis / (1000 * 60)) % 60);
 		return minutes + ":" + seconds;
 	}
 
