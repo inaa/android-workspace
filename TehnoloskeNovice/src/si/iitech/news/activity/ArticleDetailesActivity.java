@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -116,6 +117,7 @@ public class ArticleDetailesActivity extends FragmentActivity implements OnClick
 					imageView.setMinimumWidth(200);
 					imageView.setMaxWidth(200);
 					imageView.setMaxHeight(200);
+					imageView.setScaleType(ScaleType.CENTER_INSIDE);
 					imageView.setPadding(5, 5, 5, 5);
 					imageView.setClickable(true);
 					imageView.setOnClickListener(this);

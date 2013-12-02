@@ -27,22 +27,21 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background_type_1"
-        android:drawableLeft="@drawable/slo_tech"
+        android:drawableLeft="@drawable/rac_nov"
         android:gravity="center_vertical|center_horizontal|start"
-        android:onClick="startSloTech"
+        android:onClick="startRacunalniskeNovice"
         android:padding="5dp"
-        android:text="@string/rest_slo_tech_title" />
+        android:text="@string/rest_racunalniske_novice_title" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/fb_siva"
         android:orientation="vertical" >
-
     </LinearLayout>
 
     <Button
@@ -62,26 +61,6 @@
         android:layout_height="1dp"
         android:background="@color/fb_siva"
         android:orientation="vertical" >
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background_type_1"
-        android:drawableLeft="@drawable/rac_nov"
-        android:gravity="center_vertical|center_horizontal|start"
-        android:onClick="startRacunalniskeNovice"
-        android:padding="5dp"
-        android:text="@string/rest_racunalniske_novice_title" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/fb_siva"
-        android:orientation="vertical" >
-
     </LinearLayout>
 
     <Button
@@ -94,6 +73,24 @@
         android:onClick="startMobiNovice"
         android:padding="5dp"
         android:text="@string/rest_mobi_novice_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fb_siva"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_type_1"
+        android:drawableLeft="@drawable/slo_tech"
+        android:gravity="center_vertical|center_horizontal|start"
+        android:onClick="startSloTech"
+        android:padding="5dp"
+        android:text="@string/rest_slo_tech_title" />
 
     <LinearLayout
         android:layout_width="match_parent"

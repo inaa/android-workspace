@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ImageView
+    <si.iitech.util.TouchImageView
         android:id="@+id/imgDisplay"
         android:layout_width="fill_parent"
         android:layout_height="382dp"
-        android:scaleType="fitCenter" android:layout_weight="0.41"/>
+        android:layout_weight="0.41" />
 
     <TextView
         android:id="@+id/image_title"
