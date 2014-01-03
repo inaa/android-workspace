@@ -4,6 +4,7 @@
     <string name="popup_article_item1">Oglej si članek na spletu</string>
     <string name="bundle_rest">REST</string>
     <string name="bundle_title">TITLE</string>
+    
     <string name="rest_slo_tech">http://95.85.43.192:8080/IITech/service/article/0</string>
     <string name="rest_mobitel_tehnik">http://95.85.43.192:8080/IITech/service/article/1</string>
     <string name="rest_racunalniske_novice">http://95.85.43.192:8080/IITech/service/article/2</string>

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="si.iiteam.tehnoloskenovice"
+    package="si.iitech.news"
     android:versionCode="12"
     android:versionName="1.1" >
     
@@ -68,9 +68,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name="si.iitech.application.ImageApplication" >
+        android:name="si.iitech.news.application.NewsApplication" >
         <activity
-            android:name="si.iitech.news.activity.MainActivity"
+            android:name="si.iitech.news.activity.NewsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
