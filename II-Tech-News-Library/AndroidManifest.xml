@@ -70,7 +70,7 @@
         android:theme="@style/AppTheme"
         android:name="si.iitech.news.application.NewsApplication" >
         <activity
-            android:name="si.iitech.news.activity.NewsActivity"
+            android:name="si.iitech.news.activity.TestTest"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>

@@ -13,6 +13,7 @@ import si.iitech.rest.RestCall;
 import si.iitech.rest.RestEnum;
 import si.iitech.rest.RestResponce;
 import si.iitech.service.ArticleService;
+import si.iitech.util.ArticleValues;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -35,24 +36,32 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class SearchFragment extends Fragment implements LoaderCallbacks<RestResponce>, OnClickListener, OnItemClickListener {
+public class ArticleSearchFragment extends Fragment implements LoaderCallbacks<RestResponce>, OnClickListener, OnItemClickListener {
 
-	private ArticleService service;
-	private List<ArticleEntity> list;
-	private EditText text;
-	private Button add;
-	private Resources resources;
-	private String title;
-	private ArticleAdapter noviceAdapter;
-	private ListView listViewResult;
-	private Activity activity;
+	private ArticleService		service;
+	private List<ArticleEntity>	list;
+	private EditText			text;
+	private Button				add;
+	private Resources			resources;
+	private String				title = "Search";
+	private ArticleAdapter		noviceAdapter;
+	private ListView			listViewResult;
+	private Activity			activity;
+
+	public static final ArticleSearchFragment newInstance(Context context, String title, String restPath) {
+		Bundle bundle = new Bundle();
+		bundle.putString(context.getResources().getString(R.string.bundle_title, title), title);
+		bundle.putString(context.getResources().getString(R.string.bundle_rest), restPath);
+		ArticleSearchFragment searchFragment = new ArticleSearchFragment();
+		searchFragment.setArguments(bundle);
+		return searchFragment;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.search, container, false);
 		add = (Button) v.findViewById(R.id.add);
 		text = (EditText) v.findViewById(R.id.text);
-
 		add.setOnClickListener(this);
 		listViewResult = (ListView) v.findViewById(R.id.listView_result);
 		listViewResult.setOnItemClickListener(this);
@@ -91,7 +100,6 @@ public class SearchFragment extends Fragment implements LoaderCallbacks<RestResp
 		Bundle args = new Bundle();
 		args.putParcelable(RestCall.URI_REST, url);
 		args.putString(RestCall.JSON_REST, json);
-		// articles = deserialize(ArticlePreview.class, fileName);
 		getLoaderManager().initLoader(RestCall.NALOZI_REST, args, this);
 	}
 
@@ -131,12 +139,10 @@ public class SearchFragment extends Fragment implements LoaderCallbacks<RestResp
 	private void displayNews() {
 		noviceAdapter = new ArticleAdapter(getActivity().getApplicationContext(), list);
 		listViewResult.setAdapter(noviceAdapter);
-
 	}
 
 	@Override
 	public void onLoaderReset(Loader<RestResponce> arg0) {
-
 	}
 
 	@Override
@@ -149,13 +155,12 @@ public class SearchFragment extends Fragment implements LoaderCallbacks<RestResp
 		} else {
 			Toast.makeText(activity, activity.getResources().getString(R.string.opozorilo_ni_podatkov_iskanje), Toast.LENGTH_SHORT).show();
 		}
-
 	}
 
 	private void openArticleDetails(ArticleEntity article) {
 		Intent intent = new Intent(this.getActivity(), ArticleDetailesActivity.class);
 		Bundle b = new Bundle();
-		b.putSerializable("article", article);
+		b.putSerializable(ArticleValues.INTENT_EXTRA_ARTICLE, article);
 		intent.putExtras(b);
 		getActivity().startActivity(intent);
 	}

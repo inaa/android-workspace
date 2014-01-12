@@ -49,13 +49,12 @@ public class ArticleAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int index, View convertView, ViewGroup arg2) {
-		ArticleEntity articlePreview = list.get(index);
+	public View getView(int index, View convertView, ViewGroup view) {
+		ArticleEntity article = list.get(index);
 		ArticleHolder holder = null;
 		String pictureUrl = "";
 
 		LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-
 		if (null == convertView) {
 			convertView = inflater.inflate(R.layout.article_preview_adapter, null);
 			holder = new ArticleHolder();
@@ -66,14 +65,15 @@ public class ArticleAdapter extends BaseAdapter {
 		} else {
 			holder = (ArticleHolder) convertView.getTag();
 		}
-		holder.textViewTitle.setText(articlePreview.getTitle());
-		Date date = articlePreview.getArticleDate();
+		
+		holder.textViewTitle.setText(article.getTitle());
+		Date date = article.getArticleDate();
 		holder.textViewDate.setText(date.toString());
 
-		List<MediaElement> images = articlePreview.getImages();
+		List<MediaElement> images = article.getImages();
 		if (images != null) {
 			if (!images.isEmpty()) {
-				pictureUrl = articlePreview.getImages().get(0).getHref();
+				pictureUrl = article.getImages().get(0).getHref();
 			}
 		}
 		ImageLoader.getInstance().displayImage(pictureUrl, holder.articleImage);

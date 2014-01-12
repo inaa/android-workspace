@@ -23,6 +23,12 @@
     	<item name="android:textStyle">bold</item>
     </style>
     
+    <style name="TitleGallery" parent="@android:style/TextAppearance">
+    	<item name="android:textColor">@color/black</item>
+    	<item name="android:textSize">@dimen/gallery_title_size</item>
+    	<item name="android:textStyle">bold</item>
+    </style>
+    
     <style name="PreviewTitle" parent="@android:style/TextAppearance">
     	<item name="android:textColor">@color/black</item>
     	<item name="android:textSize">@dimen/normal_text_size</item>
