@@ -1,5 +1,8 @@
 package si.iitech.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,12 +10,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import si.iitech.news.entity.ArticleEntity;
 import si.iitech.news.entity.MediaElement;
 import si.iitech.rest.RestCoreCrud;
-import si.iitech.util.IITechDate;
+import android.text.format.DateFormat;
+import android.util.Log;
 
 public class ArticleService implements RestCoreCrud<ArticleEntity> {
 
@@ -27,6 +29,10 @@ public class ArticleService implements RestCoreCrud<ArticleEntity> {
 		for (int i = 0; i < array.length(); i++) {
 			try {
 				JSONObject object = array.getJSONObject(i);
+				Log.i("Json Object", object.toString());
+			
+				
+				
 				list.add(convertToArticle(object));
 			} catch (JSONException e) {
 				Log.i(className, e.toString());
@@ -37,13 +43,17 @@ public class ArticleService implements RestCoreCrud<ArticleEntity> {
 	}
 
 	public ArticleEntity convertToArticle(JSONObject object) throws JSONException {
+		
+		Log.i("singleArticle", "method");
 		ArticleEntity article = new ArticleEntity();
 
 		article.setTitle(object.getString("title"));
-		article.setType(object.getString("type"));
+		article.setSourceName(object.getString("sourceName"));
 		article.setAuthor(object.getString("author"));
-		long date = object.getLong("articleDate");
-		article.setArticleDate(new IITechDate(date));
+		
+		Date date = formatDate(object.getString("articleDate"));
+		
+		article.setArticleDate(date);
 		article.setHtml(object.getString("html"));
 		article.setHref(object.getString("href"));
 
@@ -63,10 +73,10 @@ public class ArticleService implements RestCoreCrud<ArticleEntity> {
 			article.setVideos(listVideos);
 		}
 
-		if (object.isNull("source")) {
+		if (object.isNull("sources")) {
 			article.setSource(null);
 		} else {
-			JSONArray arraySource = object.getJSONArray("source");
+			JSONArray arraySource = object.getJSONArray("sources");
 			List<MediaElement> listSource = mediaElements(arraySource);
 			article.setSource(listSource);
 		}
@@ -74,6 +84,8 @@ public class ArticleService implements RestCoreCrud<ArticleEntity> {
 		// Log.i("singleArticle", article.toString());
 		return article;
 	}
+
+	
 
 	public MediaElement convertToMediaElement(JSONObject object) throws JSONException {
 		MediaElement mediaElement = new MediaElement();
@@ -96,6 +108,15 @@ public class ArticleService implements RestCoreCrud<ArticleEntity> {
 		}
 		return list;
 
+	}
+	
+	private Date formatDate(String date) {
+		SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		try {
+			return parser.parse(date);
+		} catch (ParseException e) {
+			return new Date();
+		}
 	}
 
 }

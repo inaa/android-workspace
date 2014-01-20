@@ -3,6 +3,7 @@ package si.iitech.news.fragments;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 public class ArticleFragmentHolder {
 
@@ -10,18 +11,16 @@ public class ArticleFragmentHolder {
 	private Drawable	drawable;
 	private String		title;
 
-	public static ArticleFragmentHolder createHolderForArticleListFragment(Context context, Drawable drawable, String title, String rest, String request, String type, String source) {
-		
-		
-		
-		ArticleListFragment fragment = ArticleListFragment.newInstance(context, title, rest);
+	public static ArticleFragmentHolder createHolderForArticleListFragment(Context context, Drawable drawable, String title, String rest, int request,
+			int type, int source) {
+		Log.i("REST", rest + "/" + request + "/" + type + "/" + source);
+		ArticleListFragment fragment = ArticleListFragment.newInstance(context, title, rest + "/" + request + "/" + type + "/" + source);
 		return new ArticleFragmentHolder(drawable, fragment, title);
 	}
 
-	public static ArticleFragmentHolder createHolderForArticleSearchFragment(Context context, Drawable drawable, String title, String rest, String request, String type) {
-		
-		
-		ArticleSearchFragment fragment = ArticleSearchFragment.newInstance(context, title, rest);
+	public static ArticleFragmentHolder createHolderForArticleSearchFragment(Context context, Drawable drawable, String title, String rest, int request,
+			int type) {
+		ArticleSearchFragment fragment = ArticleSearchFragment.newInstance(context, title, rest + "/" + request + "/" + type);
 		return new ArticleFragmentHolder(drawable, fragment, title);
 	}
 

@@ -1,10 +1,13 @@
 package si.iitech.news.activity;
 
 import java.util.List;
+import java.util.Random;
 
 import si.iitech.news.R;
 import si.iitech.news.fragments.ArticleFragmentHolder;
 import android.app.ActionBar.LayoutParams;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -129,6 +132,19 @@ public abstract class ArticleListActivity extends SlidingFragmentActivity implem
 		if (view.getTag() instanceof Fragment) {
 			changeFragment((Fragment) view.getTag(), R.id.ViewSwitcher);
 		}
+	}
+
+	public int getRequestID() {
+		String idKey = "id";
+		String sharedPreferencesKey = "news";
+
+		SharedPreferences prefs = this.getSharedPreferences(sharedPreferencesKey, Context.MODE_PRIVATE);
+		int id = prefs.getInt(idKey, 0);
+		if (id == 0) {
+			id = new Random().nextInt(100000) + 1;
+			prefs.edit().putInt(idKey, id).commit();
+		}
+		return id;
 
 	}
 }
