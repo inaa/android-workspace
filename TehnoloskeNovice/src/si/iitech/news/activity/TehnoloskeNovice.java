@@ -16,7 +16,7 @@ import android.view.View;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
-public class MainActivity extends SlidingFragmentActivity {
+public class TehnoloskeNovice extends SlidingFragmentActivity {
 
 	// Fragments
 	private ArticleListFragment sloTechFragment;
